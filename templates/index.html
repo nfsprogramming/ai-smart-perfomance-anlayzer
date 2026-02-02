@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Mental Health Predictor</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <h1>Student Wellness <span class="highlight">Monitor</span></h1>
+            <p>Hybrid AI Analysis for Mental Health Risk Prediction</p>
+        </header>
+
+        <div class="glass-panel">
+            <section class="input-section">
+                <h2>Student Details</h2>
+                <form id="predictionForm">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="marks">Marks (%)</label>
+                            <input type="number" id="marks" min="0" max="100" required placeholder="85">
+                        </div>
+                        <div class="input-group">
+                            <label for="attendance">Attendance (%)</label>
+                            <input type="number" id="attendance" min="0" max="100" required placeholder="90">
+                        </div>
+                        <div class="input-group">
+                            <label for="sleep_hours">Sleep (Hours)</label>
+                            <input type="number" id="sleep_hours" min="0" max="24" required placeholder="7">
+                        </div>
+                        <div class="input-group">
+                            <label for="screen_time">Screen Time (Hours)</label>
+                            <input type="number" id="screen_time" min="0" max="24" required placeholder="4">
+                        </div>
+                        <div class="input-group">
+                            <label for="assignment_delay">Assignment Delay (Days)</label>
+                            <input type="number" id="assignment_delay" min="0" required placeholder="0">
+                        </div>
+                    </div>
+                    
+                    <div class="input-full">
+                        <label for="feedback">Student Feedback / Journal Entry</label>
+                        <textarea id="feedback" rows="4" required placeholder="I feel happy and excited about learning..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-text">Analyze Risk</span>
+                        <div class="loading-spinner hidden"></div>
+                    </button>
+                </form>
+            </section>
+
+            <section id="resultSection" class="result-section hidden">
+                <div class="result-header">
+                    <h2>Analysis Result</h2>
+                    <div id="riskBadge" class="risk-badge">Low Risk</div>
+                </div>
+
+                <div class="grid-layout">
+                    <div class="chart-container">
+                        <h3>Model Confidence</h3>
+                        <div class="progress-bars">
+                            <div class="bar-group">
+                                <label>Low Risk</label>
+                                <div class="progress-bg"><div id="probLow" class="progress-fill" style="width: 0%"></div></div>
+                            </div>
+                            <div class="bar-group">
+                                <label>Medium Risk</label>
+                                <div class="progress-bg"><div id="probMed" class="progress-fill" style="width: 0%"></div></div>
+                            </div>
+                            <div class="bar-group">
+                                <label>High Risk</label>
+                                <div class="progress-bg"><div id="probHigh" class="progress-fill" style="width: 0%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recommendations-container">
+                        <h3>Recommendations</h3>
+                        <ul id="recommendationsList">
+                            <!-- Recommendations will appear here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="explanations-container">
+                    <h3>Key Factors (AI Explanation)</h3>
+                    <div id="featureImportance" class="tags-container">
+                        <!-- Feature tags -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
