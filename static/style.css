@@ -210,6 +210,17 @@ textarea:focus {
     background: rgba(0, 0, 0, 0.4);
 }
 
+/* Remove Number Input Spinners */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 textarea {
     resize: vertical;
     min-height: 120px;
