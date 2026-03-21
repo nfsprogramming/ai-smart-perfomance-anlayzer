@@ -1,6 +1,7 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 from hybrid_model import HybridMentalHealthModel, get_dummy_data
+import os
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
@@ -8,6 +9,11 @@ CORS(app)
 # Initialize and train the model on startup
 model = HybridMentalHealthModel()
 model.train(get_dummy_data())
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.png', mimetype='image/png')
 
 @app.route('/')
 def home():
